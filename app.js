@@ -18,8 +18,7 @@ const festivalPeriods=[
  {start:[1019,"Scarlatan",20],end:[1019,"Ero",19],host:"Open Month",items:["Asterian Restoration — Seleucarian/Knights ball (date TBD)","Asterian Restoration — Closing Ceremony (date TBD)"]}
 ];
 const festivalEvents=[
- [1018,"Scarlatan",12,"Asterian Restoration","Opening ceremony and estate tour"],
- [1018,"Scarlatan",20,"Asterian Restoration","Opening ceremony & estate tour"],
+ [1018,"Scarlatan",8,"Asterian Restoration","Opening Ceremony & Estate tour"],
  [1018,"Ero",5,"Lady Gaia's Order","Title TBD"],
  [1018,"Ero",7,"Lord Prospero's Order","The Festival of Investment: An impossible commission"],
  [1018,"Ero",10,"Devotees of the Fountain (clan)","Vigil for Lady Indrani"],
