@@ -33,16 +33,19 @@ const festivalEvents=[
 ].map(([year,month,day,host,title])=>({year,month,day,host,title}));
 function serial(y,m,d){return y*300+months.indexOf(m)*25+(d-1)}
 function periodFor(y,m,d){const n=serial(y,m,d);return festivalPeriods.find(p=>n>=serial(...p.start)&&n<=serial(...p.end))}
+function selectCalendarDay(y,m,d){if(year!==y){year=y;render()}requestAnimationFrame(()=>{const cell=document.querySelector(`.day[data-date="${y}-${m}-${d}"]`);if(cell){document.querySelectorAll(".day.selected-day").forEach(x=>x.classList.remove("selected-day"));cell.classList.add("selected-day");cell.scrollIntoView({behavior:"smooth",block:"center"})}detailsFor(y,m,d)})}
 function detailsFor(y,m,d){
  const event=festivalEvents.find(e=>e.year===y&&e.month===m&&e.day===d),period=periodFor(y,m,d),box=document.getElementById("calendarDetails");
  let body='<span class="kicker">Asterian Festival</span><h3>'+m+' '+d+', '+y+' AF</h3>';
  if(event) body+='<p class="detail-date">'+event.host+'</p><p><strong>'+event.title+'</strong></p>';
  if(period){body+='<p>Festival period: <strong>'+period.host+'</strong></p>';if(period.items)body+='<ul>'+period.items.map(x=>'<li>'+x+'</li>').join('')+'</ul>'}
- box.innerHTML=body;box.scrollIntoView({behavior:"smooth",block:"nearest"});
+ box.innerHTML=body;
 }
 
 const grid=document.getElementById("calendarGrid"),label=document.getElementById("yearLabel"),today=document.getElementById("todayYear");
-function render(){label.textContent=year+" AF";today.textContent=year;grid.innerHTML="";months.forEach(name=>{const m=document.createElement("article");m.className="month";const h=document.createElement("h3");h.textContent=name;m.appendChild(h);const d=document.createElement("div");d.className="days";for(let i=1;i<=25;i++){const cell=document.createElement("span");cell.className="day";cell.textContent=i;cell.title=name+" "+i+", "+year+" AF";const ev=festivalEvents.find(e=>e.year===year&&e.month===name&&e.day===i),period=periodFor(year,name,i);if(period)cell.classList.add("host-day");if(ev){cell.classList.add("event-day");cell.title=ev.host+": "+ev.title;cell.tabIndex=0;cell.onclick=()=>detailsFor(year,name,i);cell.onkeydown=e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();detailsFor(year,name,i)}}}d.appendChild(cell)}m.appendChild(d);grid.appendChild(m)})}
+function render(){label.textContent=year+" AF";today.textContent=year;grid.innerHTML="";months.forEach(name=>{const m=document.createElement("article");m.className="month";const h=document.createElement("h3");h.textContent=name;m.appendChild(h);const d=document.createElement("div");d.className="days";for(let i=1;i<=25;i++){const cell=document.createElement("span");cell.className="day";cell.textContent=i;cell.title=name+" "+i+", "+year+" AF";cell.dataset.date=year+"-"+name+"-"+i;const ev=festivalEvents.find(e=>e.year===year&&e.month===name&&e.day===i),period=periodFor(year,name,i);if(period)cell.classList.add("host-day");if(ev){cell.classList.add("event-day");cell.title=ev.host+": "+ev.title;cell.tabIndex=0;cell.onclick=()=>selectCalendarDay(year,name,i);cell.onkeydown=e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();selectCalendarDay(year,name,i)}}}d.appendChild(cell)}m.appendChild(d);grid.appendChild(m)})}
+function renderEventIndex(){const el=document.getElementById("eventIndex");if(!el)return;el.innerHTML=festivalEvents.slice().sort((a,b)=>serial(a.year,a.month,a.day)-serial(b.year,b.month,b.day)).map(e=>'<button type="button" data-y="'+e.year+'" data-m="'+e.month+'" data-d="'+e.day+'"><strong>'+e.title+'</strong><small>'+e.host+' · '+e.month+' '+e.day+', '+e.year+' AF</small></button>').join("");el.querySelectorAll("button").forEach(b=>b.addEventListener("click",()=>selectCalendarDay(Number(b.dataset.y),b.dataset.m,Number(b.dataset.d))))}
+renderEventIndex();
 document.getElementById("prevYear").onclick=()=>{year--;render()};document.getElementById("nextYear").onclick=()=>{year++;render()};today.onclick=()=>{year=1015;render()};render();
 
 const zoneSelect=document.getElementById("timezoneSelect");
