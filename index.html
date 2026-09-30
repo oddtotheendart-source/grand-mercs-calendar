@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Grand Merchant Collective Planner</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="brand">
+    <span class="eyebrow">ACHAEA</span>
+    <h1>Grand Merchant Collective</h1>
+    <p>Planner · Archive · Guide</p>
+  </div>
+  <nav>
+    <a href="#home">Home</a><a href="#calendar">Calendar</a><a href="#learning">Learning</a>
+    <a href="#merchants">Merchants</a><a href="#scrolls">Clan Scrolls</a><a href="#events">Events</a>
+    <a href="#history">History</a><a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<main>
+<section id="home" class="hero">
+  <article class="panel intro">
+    <span class="kicker">Welcome</span>
+    <h2>Grand Merchant Collective Planner</h2>
+    <p>A player-created guide, calendar, and historical record for the Grand Merchant Collective of Achaea.</p>
+    <div class="actions"><a class="button" href="#calendar">View Game Calendar</a><a class="button ghost" href="#learning">New Merchant?</a></div>
+  </article>
+  <aside class="panel now">
+    <span class="kicker">Achaea Now</span>
+    <h3>1015 AF</h3>
+    <p>Current Achaean date calibration is being verified.</p>
+    <div class="moon">☾ <span>Waxing Gibbous</span></div>
+    <small>Last calibration supplied: 30 Sep 2026 · 11:47:55 GMT</small>
+  </aside>
+</section>
+
+<section id="calendar" class="panel section">
+ <div class="section-head">
+  <div><span class="kicker">Game Calendar</span><h2>Achaean Calendar <span id="yearLabel">1015 AF</span></h2></div>
+  <div class="year-controls"><button id="prevYear">‹</button><button id="todayYear">1015</button><button id="nextYear">›</button></div>
+ </div>
+ <p class="lede">Twelve Achaean months, twenty-five days each. Event markers and Earth-date conversion will be added as source dates are verified.</p>
+ <div id="calendarGrid" class="calendar-grid"></div>
+</section>
+
+<section class="two-col">
+ <article id="learning" class="panel section">
+   <span class="kicker">Learning & Training</span><h2>Start Here</h2>
+   <p>Welcome → Learn → Train → Advance → Participate</p>
+   <div class="link-grid"><span>Newcomers</span><span>Mentors</span><span>Training</span><span>Professors</span><span>Classroom</span><span>Advancement</span></div>
+   <p class="note">Current guidance will be drawn from current Merchant clan scrolls rather than reconstructed from older material.</p>
+ </article>
+ <article id="events" class="panel section">
+   <span class="kicker">Coming Up</span><h2>Events</h2>
+   <div class="event-card"><strong>Asterian Festival</strong><span>Begins Scarlatan 1018 AF</span><p>Festival planning record. Additional dates and Merchant activities will be added when verified.</p></div>
+   <div class="event-card muted"><strong>Grand Merchant Collective Events</strong><span>Calendar intake opening soon</span></div>
+ </article>
+</section>
+
+<section id="merchants" class="panel section">
+ <span class="kicker">The Collective</span><h2>Meet the Merchants</h2>
+ <p>Member portraits and public roles will appear here after the current clan list is supplied and verified.</p>
+ <div class="member-placeholder"><div class="portrait-placeholder">Portrait</div><div><h3>Ticca Indasha</h3><p>Directory portrait selected. Public Merchant role details pending source entry.</p></div></div>
+</section>
+
+<section class="two-col">
+ <article id="scrolls" class="panel section"><span class="kicker">Reference Library</span><h2>Clan Scrolls</h2>
+ <div class="scroll-groups"><span>Novices</span><span>Merchant Life</span><span>Classes & Skills</span><span>Services & Shopkeeping</span><span>Ships, Ocean & Seafaring</span><span>Miscellaneous</span></div>
+ </article>
+ <article id="history" class="panel section"><span class="kicker">Archive</span><h2>Collective History</h2><p>Past events, older scrolls, competitions, results, and public records will be preserved by Achaean year without being confused with current guidance.</p></article>
+</section>
+
+<section id="contact" class="panel section contact">
+ <span class="kicker">Contribute</span><h2>Help Keep the Planner Current</h2>
+ <p>Submit an event, historical record, correction, or website issue. The web submission route is planned; for now, contact <strong>Ticca Indasha</strong> in Achaea.</p>
+</section>
+</main>
+<footer>Player-created resource for Achaea · Not an official Iron Realms Entertainment website.</footer>
+<script src="app.js"></script>
+</body></html>
