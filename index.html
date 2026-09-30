@@ -30,14 +30,32 @@
   </article>
   <aside class="panel now">
     <span class="kicker">Achaea Now</span>
-    <h3>1015 AF</h3>
-    <p>Current Achaean date calibration is being verified.</p>
+    <h3 id="homeAchaeaDate">Calendar calibration pending</h3>
+    <div class="time-stack">
+      <div><span>Game time</span><strong id="gameTime">Late afternoon</strong></div>
+      <div><span>GMT</span><strong id="gmtClock">--:--:--</strong></div>
+      <div><span id="localZoneLabel">Eastern</span><strong id="localClock">--:--:--</strong></div>
+    </div>
+    <label class="timezone-label" for="timezoneSelect">Your time zone</label>
+    <select id="timezoneSelect">
+      <option value="America/New_York">Eastern</option>
+      <option value="America/Chicago">Central</option>
+      <option value="America/Denver">Mountain</option>
+      <option value="America/Los_Angeles">Pacific</option>
+      <option value="America/Anchorage">Alaska</option>
+      <option value="Pacific/Honolulu">Hawaii</option>
+      <option value="Europe/London">London</option>
+      <option value="Europe/Paris">Central Europe</option>
+      <option value="Australia/Sydney">Sydney</option>
+      <option value="Asia/Tokyo">Tokyo</option>
+    </select>
     <div class="moon">☾ <span>Waxing Gibbous</span></div>
-    <small>Last calibration supplied: 30 Sep 2026 · 11:47:55 GMT</small>
+    <a class="month-link" href="#calendar"><span>Open the Achaean calendar</span><strong id="currentMonthLink">Current month →</strong></a>
+    <small>Earth clocks are live. Exact Achaean day/month conversion will activate after the game-date calibration is verified.</small>
   </aside>
 </section>
 
-<section id="calendar" class="panel section">
+<section id="calendar" class="panel section calendar-section">
  <div class="section-head">
   <div><span class="kicker">Game Calendar</span><h2>Achaean Calendar <span id="yearLabel">1015 AF</span></h2></div>
   <div class="year-controls"><button id="prevYear">‹</button><button id="todayYear">1015</button><button id="nextYear">›</button></div>
