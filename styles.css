@@ -181,3 +181,21 @@ section[id]{scroll-margin-top:16px}
   .inner-header .header-crest{width:88px;height:88px;bottom:-28px}
   .site-header.inner-header{min-height:120px}
 }
+
+/* Anchor the floating shield to the whole banner, outside its grid area. */
+.site-header.inner-header .header-crest{
+  grid-area:auto;
+  inset:auto auto -76px max(3vw,16px);
+  width:160px;
+  height:160px;
+  margin:0;
+}
+@media(max-width:1500px){
+  .site-header.inner-header .header-crest{bottom:-52px;width:112px;height:112px}
+  .inner-header + main{margin-top:72px}
+}
+@media(max-width:700px){
+  .site-header.inner-header .header-crest{bottom:-44px;width:88px;height:88px}
+  .inner-header + main{margin-top:64px}
+  .inner-header nav{padding-left:76px}
+}
