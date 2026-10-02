@@ -140,3 +140,25 @@ section[id]{scroll-margin-top:16px}
 @media(max-width:900px){.merchant-directory{grid-template-columns:repeat(2,minmax(0,1fr))}.planner-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:600px){.merchant-directory,.planner-grid{grid-template-columns:1fr}.crucible-current,.trade-row,.trade-row:nth-of-type(even){grid-template-columns:1fr}.trade-row .trade-banner,.trade-row .trade-detail{grid-column:1;grid-row:auto}.trade-row .trade-banner{grid-row:1}.trade-banner{flex-direction:row;align-items:center;justify-content:flex-start}.mini-grid{grid-template-columns:1fr}.inner-header .brand h1{font-size:1.2rem}.crucible-motto{font-size:.875rem;letter-spacing:0}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+/* Header arrangement from the marked reference. */
+.site-header.inner-header{
+  grid-template-columns:110px minmax(0,1fr) 110px;
+  grid-template-areas:"crest brand spacer" "crest nav nav";
+  column-gap:16px;
+  padding:10px max(3vw,16px);
+}
+.inner-header .header-crest{width:96px;height:96px;align-self:center}
+.inner-header .brand{text-align:center}
+.inner-header .brand h1{font-size:clamp(1.2rem,2.4vw,1.8rem)}
+.inner-header nav{justify-content:flex-end;margin-top:6px;gap:4px 20px}
+@media(max-width:700px){
+  .site-header.inner-header{
+    grid-template-columns:64px minmax(0,1fr);
+    grid-template-areas:"crest brand" "nav nav";
+    column-gap:12px;
+  }
+  .inner-header .header-crest{width:64px;height:64px}
+  .inner-header .brand h1{font-size:1.2rem;overflow-wrap:anywhere}
+  .inner-header nav{justify-content:flex-end;gap:4px 16px}
+}
