@@ -10,7 +10,7 @@
 <header class="site-header inner-header">
   <a class="header-crest" href="index.html" aria-label="Grand Merchant Collective home"><img src="grand-merchant-collective-crest.png" alt="Grand Merchant Collective crest"></a>
   <div class="brand"><span class="eyebrow">ACHAEA</span><h1>Grand Merchant Collective</h1><p class="page-subtitle">Planner · Archive · Guide</p></div>
-  <nav><a href="index.html">Home</a><a href="calendar.html">Calendar</a><a href="merchants.html">Merchants</a><a href="crucible.html">Crucible</a><a href="index.html#learning">Learning</a><a href="history.html">History</a><a href="index.html#contact">Contact</a></nav>
+  <nav aria-label="Primary navigation"><a href="index.html">Home</a><a href="calendar.html">Calendar</a><a href="merchants.html">Merchants</a><a href="crucible.html">Crucible</a><a href="index.html#learning">Learning</a><a href="history.html">History</a><a href="index.html#contact">Contact</a></nav>
 </header>
 
 <main class="crucible-page">
@@ -21,9 +21,9 @@
   <div class="crucible-motto"><span>Craft</span><i>✦</i><span>Create</span><i>✦</i><span>Compete</span><i>✦</i><span>Prosper</span></div>
   <p>Each Crucible turns to a different design trade. Competitors receive the same opportunity and a common brief, then present what they create.</p>
   <div class="status-row"><span class="status confirmed">Current: Cooking</span><span class="status planning">Next: Beverages</span><span class="status future">More trades to follow</span></div>
-</section>
+<nav class="event-shortcuts" aria-label="Crucible sections"><a href="#cooking">Cooking · date, requirements &amp; prizes</a><a href="#beverages">Beverages</a><a href="#registration">Registration</a><a href="#planning">Planning</a></nav></section>
 
-<section class="crucible-current">
+<section id="cooking" class="crucible-current">
   <article class="trade-banner left cooking">
     <div class="trade-emblem" aria-hidden="true">♨</div>
     <div class="trade-name"><span>First Event</span><strong>Cooking</strong></div>
@@ -41,12 +41,28 @@
   </article>
 </section>
 
+<section id="registration" class="panel section"><span class="kicker">Registration &amp; event enquiries</span><h2>Taking Part</h2><p>Web registration is not yet available. Contact <strong>Ticca Indasha</strong> in Achaea for registration information and the latest event requirements.</p><a href="calendar.html">Open the game calendar</a></section>
+<section id="planning" class="panel section planner-board">
+  <span class="kicker">Event Planner</span>
+  <h2>Shared Crucible Structure</h2>
+  <div class="planner-grid">
+    <div><b>1</b><strong>Brief</strong><p>Rules, ingredients, materials, or another common challenge are provided in advance as appropriate to the trade.</p></div>
+    <div><b>2</b><strong>Create</strong><p>Entrants prepare their design during the lead-up period.</p></div>
+    <div><b>3</b><strong>Present</strong><p>The finished work is presented at the live event.</p></div>
+    <div><b>4</b><strong>Judge</strong><p>Judging focuses on skill, creativity, presentation, and how well the entry answers the challenge.</p></div>
+  </div>
+  <div class="planner-notes">
+    <p><strong>Attendance raffle:</strong> current idea is to include everyone present, including judges, in a separate random prize drawing.</p>
+    <p><strong>Venue idea:</strong> the Park in Delos has been suggested as an open public setting.</p>
+    <p><strong>House participation:</strong> the goal is to place active Merchants into visible host, judge, support, and trade-specific roles as the series develops.</p>
+  </div>
+</section>
 <div class="crucible-divider"><span>Upcoming Crucibles</span></div>
 
-<section class="trade-row">
+<section id="beverages" class="trade-row">
   <article class="trade-detail left">
     <span class="status planning">Planning</span>
-    <h3>The Merchant's Pour</h3>
+    <p class="kicker">Prospero’s Crucible: Beverages</p><h3>The Merchant's Pour</h3><p class="event-date"><strong>OPEN — To Be Announced</strong></p>
     <p>The Beverage Crucible is planned for after the Asterian Restoration so the two events do not compete for the same window.</p>
     <div class="category-chips"><span>Fermented</span><span>Distilled</span><span>Mixed</span><span>Steeped</span><span>Pressed</span></div>
     <p class="note">Phyr is interested in hosting. Toscus and Surin have also offered to help.</p>
@@ -121,21 +137,7 @@
   </article>
 </section>
 
-<section class="panel section planner-board">
-  <span class="kicker">Event Planner</span>
-  <h2>Shared Crucible Structure</h2>
-  <div class="planner-grid">
-    <div><b>1</b><strong>Brief</strong><p>Rules, ingredients, materials, or another common challenge are provided in advance as appropriate to the trade.</p></div>
-    <div><b>2</b><strong>Create</strong><p>Entrants prepare their design during the lead-up period.</p></div>
-    <div><b>3</b><strong>Present</strong><p>The finished work is presented at the live event.</p></div>
-    <div><b>4</b><strong>Judge</strong><p>Judging focuses on skill, creativity, presentation, and how well the entry answers the challenge.</p></div>
-  </div>
-  <div class="planner-notes">
-    <p><strong>Attendance raffle:</strong> current idea is to include everyone present, including judges, in a separate random prize drawing.</p>
-    <p><strong>Venue idea:</strong> the Park in Delos has been suggested as an open public setting.</p>
-    <p><strong>House participation:</strong> the goal is to place active Merchants into visible host, judge, support, and trade-specific roles as the series develops.</p>
-  </div>
-</section>
+
 </main>
 
 <footer>Player-created resource for Achaea · Not an official Iron Realms Entertainment website.</footer>
