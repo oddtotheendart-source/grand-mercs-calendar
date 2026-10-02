@@ -199,3 +199,15 @@ section[id]{scroll-margin-top:16px}
   .inner-header + main{margin-top:64px}
   .inner-header nav{padding-left:76px}
 }
+
+/* Balance the shield in the left gutter and across the banner edge. */
+.site-header.inner-header .header-crest{bottom:0;transform:translateY(50%)}
+@media(min-width:1400px){
+  .site-header.inner-header .header-crest{
+    left:calc((100vw - min(1140px,94vw))/4);
+    transform:translate(-50%,50%);
+  }
+}
+body:before{
+  background:linear-gradient(rgba(5,9,17,.728),rgba(5,9,17,.752)),url("Prospero-shrine.png") center/cover no-repeat;
+}
