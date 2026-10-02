@@ -40,13 +40,17 @@ function detailsFor(y,m,d){
  if(event) body+='<p class="detail-date">'+event.host+'</p><p><strong>'+event.title+'</strong></p>';
  if(period){body+='<p>Festival period: <strong>'+period.host+'</strong></p>';if(period.items)body+='<ul>'+period.items.map(x=>'<li>'+x+'</li>').join('')+'</ul>'}
  box.innerHTML=body;
+ if(event) openEventPlan(box, `festival:${y}:${m}:${d}:${event.host}:${event.title}`);
+ box.tabIndex=-1; box.focus({preventScroll:true}); box.scrollIntoView({behavior:"smooth",block:"start"});
 }
 
 const grid=document.getElementById("calendarGrid"),label=document.getElementById("yearLabel"),today=document.getElementById("todayYear");
 function render(){label.textContent=year+" AF";today.textContent=year;grid.innerHTML="";months.forEach(name=>{const m=document.createElement("article");m.className="month";const h=document.createElement("h3");h.textContent=name;m.appendChild(h);const d=document.createElement("div");d.className="days";for(let i=1;i<=25;i++){const cell=document.createElement("span");cell.className="day";cell.textContent=i;cell.title=name+" "+i+", "+year+" AF";cell.dataset.date=year+"-"+name+"-"+i;const ev=festivalEvents.find(e=>e.year===year&&e.month===name&&e.day===i),period=periodFor(year,name,i);if(period)cell.classList.add("host-day");if(ev){cell.classList.add("event-day");cell.title=ev.host+": "+ev.title;cell.tabIndex=0;cell.onclick=()=>selectCalendarDay(year,name,i);cell.onkeydown=e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();selectCalendarDay(year,name,i)}}}d.appendChild(cell)}m.appendChild(d);grid.appendChild(m)})}
 function renderEventIndex(){const el=document.getElementById("eventIndex");if(!el)return;el.innerHTML=festivalEvents.slice().sort((a,b)=>serial(a.year,a.month,a.day)-serial(b.year,b.month,b.day)).map(e=>'<button type="button" data-y="'+e.year+'" data-m="'+e.month+'" data-d="'+e.day+'"><strong>'+e.title+'</strong><small>'+e.host+' · '+e.month+' '+e.day+', '+e.year+' AF</small></button>').join("");el.querySelectorAll("button").forEach(b=>b.addEventListener("click",()=>selectCalendarDay(Number(b.dataset.y),b.dataset.m,Number(b.dataset.d))))}
+if(grid){
 renderEventIndex();
 document.getElementById("prevYear").onclick=()=>{year--;render()};document.getElementById("nextYear").onclick=()=>{year++;render()};today.onclick=()=>{year=1015;render()};render();
+}
 
 const zoneSelect=document.getElementById("timezoneSelect");
 const gmtClock=document.getElementById("gmtClock");
@@ -60,6 +64,36 @@ function updateClocks(){
   localClock.textContent=clockIn(zoneSelect.value);
   localZoneLabel.textContent=zoneSelect.options[zoneSelect.selectedIndex].text;
 }
+if(zoneSelect && gmtClock && localClock && localZoneLabel){
 zoneSelect.addEventListener("change",updateClocks);
 updateClocks();
 setInterval(updateClocks,1000);
+}
+
+const planningFields=[["volunteers","Volunteers"],["needed","What’s needed"],["post","Post"],["supplies","Supplies"],["prizes","Prizes"]];
+function openEventPlan(container,key){
+ const form=document.createElement("form"); form.className="event-plan";
+ const title=document.createElement("h3");title.textContent="Event planning";form.append(title);
+ const note=document.createElement("p");note.textContent="Draft notes are saved in this browser only. Download a copy to share or use when updating the website.";form.append(note);
+ let saved={};try{saved=JSON.parse(localStorage.getItem("merchant-event-plan:"+key)||"{}")||{}}catch{}
+ const fields={};
+ planningFields.forEach(([name,label])=>{
+  const wrap=document.createElement("label");wrap.textContent=label;
+  const input=document.createElement("textarea");input.name=name;input.rows=name==="post"?6:3;input.value=typeof saved[name]==="string"?saved[name]:"";input.style.cssText="display:block;width:100%;margin:6px 0 14px;padding:10px;background:#080e18;color:#f3ecdd;border:1px solid #756447;font:inherit;resize:vertical";
+  wrap.append(input);form.append(wrap);fields[name]=input;
+ });
+ const status=document.createElement("p");status.setAttribute("role","status");
+ const save=document.createElement("button");save.type="submit";save.className="button";save.textContent="Save draft";
+ const download=document.createElement("button");download.type="button";download.className="button";download.textContent="Download notes";
+ const actions=document.createElement("div");actions.className="actions";actions.append(save,download);form.append(actions,status);
+ const values=()=>Object.fromEntries(planningFields.map(([name])=>[name,fields[name].value]));
+ form.addEventListener("submit",e=>{e.preventDefault();try{localStorage.setItem("merchant-event-plan:"+key,JSON.stringify(values()));status.textContent="Draft saved in this browser."}catch{status.textContent="This browser could not save the draft. Download notes to keep a copy."}});
+ download.addEventListener("click",()=>{const data=values();const text=key+"\n\n"+planningFields.map(([name,label])=>label+"\n"+(data[name]||"Not filled in")).join("\n\n");const url=URL.createObjectURL(new Blob([text],{type:"text/plain;charset=utf-8"}));const link=document.createElement("a");link.href=url;link.download="merchant-event-notes.txt";link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);status.textContent="Notes downloaded."});
+ container.append(form);
+}
+document.querySelectorAll("[data-event-plan]").forEach(button=>button.addEventListener("click",()=>{
+ const container=document.getElementById(button.dataset.eventPlan);if(!container)return;
+ if(container.hidden){container.hidden=false;if(!container.querySelector("form"))openEventPlan(container,button.dataset.eventPlan)}
+ else container.hidden=true;
+ button.setAttribute("aria-expanded",String(!container.hidden));
+}));
