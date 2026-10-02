@@ -1,0 +1,34 @@
+name: Public source privacy guard
+on: [push, pull_request]
+jobs:
+  check-mercs:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - name: Reject explicit private MERCS article records
+        shell: python
+        run: |
+          import pathlib, re, subprocess, sys
+          patterns = [
+              re.compile(r"\bMERCS\s+NEWS\s*#\s*\d+", re.I),
+              re.compile(r"\bREADNEWS\s+MERCS\s+\d+", re.I),
+              re.compile(r"\bMERCS\s*#\s*\d+", re.I),
+          ]
+          forbidden = []
+          for name in subprocess.check_output(["git", "ls-files", "-z"]).decode().split("\0"):
+              if not name:
+                  continue
+              path = pathlib.Path(name)
+              try:
+                  content = path.read_text(encoding="utf-8")
+              except (UnicodeError, OSError):
+                  continue
+              if any(pattern.search(content) for pattern in patterns):
+                  forbidden.append(name)
+          if forbidden:
+              print("Private MERCS article references detected in: " + ", ".join(forbidden))
+              print("Remove private source material. Do not print its contents in logs.")
+              sys.exit(1)
+          print("No explicit MERCS article records detected. Manual source-provenance review remains required.")
