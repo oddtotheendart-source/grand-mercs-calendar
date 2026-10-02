@@ -88,3 +88,55 @@ main{width:min(1380px,94vw);margin:34px auto 80px}.hero,.two-col{display:grid;gr
 .history-date{padding:21px 0 0;text-align:right;color:var(--gold2);font-weight:700;letter-spacing:.04em}.history-body{padding:18px 20px;border:1px solid #d9ae622d;background:linear-gradient(135deg,#0a111eda,#050912df)}.history-body h3{margin:.55rem 0 .35rem;font-size:1.35rem}.history-body p{margin:.45rem 0;font-size:.93rem}.news-ref{margin-top:12px;color:var(--gold);font-size:.74rem;letter-spacing:.05em}
 .office-ledger,.source-ledger{margin-top:22px}.office-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:18px}.office-grid>div{padding:16px;border:1px solid #d9ae6228;background:#05091299}.office-grid strong{display:block;color:var(--gold2);margin-bottom:9px}.office-grid span{display:block;color:var(--muted);font-size:.86rem;line-height:1.45;padding:4px 0;border-bottom:1px solid #ffffff0a}.coverage-ranges{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}.coverage-ranges span{padding:8px 12px;border:1px solid var(--line);color:var(--gold2);background:#050912}.coverage-ranges .coverage-gap{border-color:#8f6d6d;color:#c8aaaa}
 @media(max-width:820px){.leader-line{grid-template-columns:1fr}.leader-arrow{transform:rotate(90deg);min-height:20px}.archive-stats{grid-template-columns:1fr}.office-grid{grid-template-columns:1fr}.history-timeline:before{left:18px}.history-entry{grid-template-columns:1fr;gap:7px;padding-left:42px}.history-entry:before{left:13px;top:42px}.history-date{text-align:left;padding:0;color:var(--gold)}}
+
+/* Compact Merchant working reference: gold, purple and original artwork retained. */
+:root{--panel:#0b1220;--panel2:#101a2a;--muted:#d2cbbb;--line:#756447}
+body{font-size:1rem;line-height:1.6}
+body:before{background:linear-gradient(#050911e8,#050911ef),url("Prospero-shrine.png") center/cover no-repeat}
+a{color:var(--gold2);text-underline-offset:.2em}
+:focus-visible{outline:3px solid var(--gold2);outline-offset:4px}
+.site-header.inner-header{position:relative;min-height:0;grid-template-columns:56px minmax(0,1fr);grid-template-areas:"crest brand" "nav nav";padding:12px max(3vw,16px);border-top:3px solid #7650a6}
+.inner-header .header-crest{width:48px;height:48px}
+.inner-header .brand h1{font-size:clamp(1.2rem,2.4vw,1.8rem);line-height:1.25;letter-spacing:.035em}
+.inner-header .page-subtitle{font-size:.875rem;letter-spacing:.06em}
+.site-header nav{gap:4px 18px;margin-top:8px;max-height:none;overflow:visible}
+nav a{font-size:.875rem;letter-spacing:0;text-transform:none;padding:6px 0}
+main,.crucible-page{width:min(1140px,94vw);margin:22px auto 48px}
+.panel{background:var(--panel2);box-shadow:none;backdrop-filter:none}
+.intro,.now,.section,.trade-detail{padding:20px}
+h2{font-size:clamp(1.5rem,3vw,2rem);line-height:1.25;margin:.35rem 0 .75rem}
+p{margin:.65rem 0;line-height:1.6}
+.kicker,.eyebrow,.status,.trade-name span{font-size:.875rem;letter-spacing:.06em}
+.button{display:inline-flex;align-items:center;min-height:44px;padding:8px 14px;font-size:.875rem;letter-spacing:0;text-transform:none;background:#30271b}
+.actions{margin-top:16px}
+.featured-events>article{padding:0;margin:0}
+.featured-events .event-card{padding:12px;margin:12px 0;background:#0b1220}
+.event-card span,.time-stack span,.timezone-label,.calendar-details .detail-date{font-size:1rem}
+.now small,.home-icon-link small,.headshot-placeholder span,footer{font-size:.875rem}
+.crucible-hero{text-align:left;padding:20px}
+.crucible-hero:before{display:none}
+.crucible-hero h2{font-size:clamp(1.8rem,4vw,2.8rem);line-height:1.15;letter-spacing:.02em;text-transform:none}
+.crucible-subtitle{font-size:1rem;letter-spacing:.04em}
+.crucible-motto,.status-row{justify-content:flex-start;margin:12px 0;gap:8px}
+.event-shortcuts{justify-content:flex-start;margin-top:14px;border-top:1px solid var(--line);padding-top:8px}
+.crucible-current,.trade-row,.trade-row:nth-of-type(even){grid-template-columns:180px minmax(0,1fr);gap:12px;margin:16px 0}
+.trade-row .trade-banner{grid-column:1;grid-row:1}
+.trade-row .trade-detail{grid-column:2;grid-row:1}
+.trade-banner{flex-direction:column;align-items:flex-start;justify-content:center;padding:16px;gap:12px;background:#101a2a}
+.trade-banner:after{display:none}
+.trade-emblem{width:40px;height:44px;font-size:1.4rem;clip-path:none;box-shadow:none}
+.trade-name strong{font-size:1.2rem;letter-spacing:0;text-transform:none;overflow-wrap:anywhere}
+.trade-detail h3{font-size:1.5rem}
+.status.future{color:var(--muted)}
+.course-strip span,.category-chips span,.planner-grid p{font-size:1rem}
+.crucible-divider,.crucible-support{margin:20px 0}
+.planner-grid>div{padding:14px}.planner-grid b{margin-bottom:8px}
+.merchant-directory{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.merchant-card{grid-template-columns:48px minmax(0,1fr);min-height:68px;padding:10px;gap:10px}
+.merchant-card img,.headshot-placeholder{width:48px;height:48px}
+.headshot-placeholder span{font-size:.75rem;letter-spacing:0;text-transform:none}
+.merchant-card h3{line-height:1.45;overflow-wrap:anywhere}
+section[id]{scroll-margin-top:16px}
+@media(max-width:900px){.merchant-directory{grid-template-columns:repeat(2,minmax(0,1fr))}.planner-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.merchant-directory,.planner-grid{grid-template-columns:1fr}.crucible-current,.trade-row,.trade-row:nth-of-type(even){grid-template-columns:1fr}.trade-row .trade-banner,.trade-row .trade-detail{grid-column:1;grid-row:auto}.trade-row .trade-banner{grid-row:1}.trade-banner{flex-direction:row;align-items:center;justify-content:flex-start}.mini-grid{grid-template-columns:1fr}.inner-header .brand h1{font-size:1.2rem}.crucible-motto{font-size:.875rem;letter-spacing:0}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
