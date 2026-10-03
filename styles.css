@@ -216,3 +216,19 @@ body:before{
 html{scroll-padding-top:180px}
 .site-header.inner-header{position:sticky;top:0;z-index:100}
 @media(max-width:700px){html{scroll-padding-top:240px}}
+
+/* Full-width, opaque history category legend. */
+.history-key{display:grid;grid-template-columns:90px minmax(0,1fr);align-items:stretch;gap:16px;width:100%;padding:16px;margin:22px 0;background:#101a2a;border:1px solid #9d875a;border-radius:4px}
+.history-key-title{align-self:center;color:#fff0cb;font-size:1rem}
+.history-key-items{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px}
+.history-key .history-chip{display:flex;align-items:center;justify-content:center;min-height:52px;padding:10px;text-align:center;font-size:.9375rem;font-weight:700;line-height:1.4;letter-spacing:0;text-transform:none;border-width:1px;background:#0a1321}
+.history-key .leadership{background:#31271a;color:#ffe2a3;border-color:#c9a863}
+.history-key .office{background:#182a40;color:#d1e7ff;border-color:#8facd0}
+.history-key .structure{background:#2a223a;color:#e6d7ff;border-color:#b09bcf}
+.history-key .place{background:#1d3025;color:#d6eed9;border-color:#8aac92}
+.history-key .patron{background:#33251a;color:#ffdcaa;border-color:#c29d6f}
+.history-key .event{background:#352127;color:#ffd9dc;border-color:#c38f95}
+.history-type{font-size:.875rem;font-weight:700;letter-spacing:.025em;background:#101a2a}
+@media(max-width:1100px){.history-key-items{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:600px){.history-key{grid-template-columns:1fr;gap:10px}.history-key-items{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:360px){.history-key-items{grid-template-columns:1fr}}
