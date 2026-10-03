@@ -249,3 +249,11 @@ details>summary:hover{background:#22334b}
 .site-header.inner-header nav{justify-content:space-evenly;gap:4px 16px}
 .site-header.inner-header nav a{font-size:1rem;font-weight:700}
 @media(max-width:700px){.site-header.inner-header .brand h1{font-size:1.2rem}.site-header.inner-header nav{gap:2px 12px}}
+
+/* A direct return to navigation in every content section. */
+.has-section-top{position:relative;padding-top:48px}
+.section-top-link{position:absolute;top:10px;right:14px;display:inline-flex;align-items:center;min-height:32px;padding:4px 9px;background:#101a2a;color:#ffe2a3;border:1px solid #a48a55;border-radius:3px;font-size:.875rem;font-weight:700;text-decoration:none;z-index:2}
+.section-top-link:hover{background:#26374e;color:#fff5de}
+.section-top-link:focus-visible{outline:3px solid #d5b9ec;outline-offset:3px}
+
+@media(max-width:380px){html{scroll-padding-top:320px}}
